@@ -1,5 +1,8 @@
 import React, {createRef, useState} from "react";
 import ListApp from "./components/ListApp";
+import withStorage from "./services/withStorage";
+
+const ListAppWithStorage = withStorage(ListApp);
 
 const App = () => {
   const inputBox = createRef();
@@ -17,7 +20,7 @@ const App = () => {
           }
         }}
       />
-      <ListApp task={task}>
+      <ListAppWithStorage task={task}>
         {({list, remove}) => (
           <div className="list-app">
             {list.length > 0
@@ -30,7 +33,7 @@ const App = () => {
               : null}
           </div>
         )}
-      </ListApp>
+      </ListAppWithStorage>
     </div>
   );
 };
